@@ -2,8 +2,6 @@
 
 A lightweight, accessibility-first React UI kit built with **Tailwind CSS v4** and **Material Symbols** icons. Eighteen composable components covering buttons, forms, navigation, feedback, data display, and layout — each ships with sensible ARIA semantics baked in.
 
-> Replace the placeholder package name `your-package-name` throughout this document with your actual published name before publishing.
-
 ---
 
 ## Table of contents
@@ -45,11 +43,11 @@ A lightweight, accessibility-first React UI kit built with **Tailwind CSS v4** a
 ## Installation
 
 ```bash
-npm install your-package-name
+npm install sodari
 # or
-yarn add your-package-name
+yarn add sodari
 # or
-pnpm add your-package-name
+pnpm add sodari
 ```
 
 ### Peer dependencies
@@ -111,11 +109,6 @@ The components reference semantic color tokens such as `bg-primary`, `text-muted
     @apply outline outline-2 outline-amber-500 outline-offset-2;
   }
 }
-
-/* Hides the connecting line under the final step in a vertical Stepper */
-.stepper li:last-child .stepper-col {
-  display: none !important;
-}
 ```
 
 To **rebrand** the kit, override any token — for example, point `--color-primary` at your brand hue and every primary button, badge, and active state updates automatically.
@@ -169,7 +162,7 @@ Accessibility is built in rather than bolted on. A few patterns recur throughout
 
 ## Components
 
-> All components are **default exports** unless noted as a named export. Import paths below assume the published package root; adjust if you re-export from a different entry point.
+> All components are imported as named exports from the package root, e.g. `import { Button } from "sodari"`.
 
 ### Icon
 
@@ -184,7 +177,7 @@ Renders a single Material Symbols glyph. Decorative by default; pass `label` to 
 | `label` | `string` | — | When set, the icon becomes `role="img"` with this name. When omitted, it is `aria-hidden`. |
 
 ```tsx
-import Icon from "your-package-name/Icon";
+import { Icon } from "sodari";
 
 // Decorative
 <Icon icon="favorite" />
@@ -215,7 +208,7 @@ A flexible button supporting five variants, two sizes, optional leading/trailing
 > For icon-only buttons (no `label`), supply `ariaLabel`. If omitted, the component falls back to the icon name as the accessible name.
 
 ```tsx
-import Button, { FabWrapper } from "your-package-name/Button";
+import { Button, FabWrapper } from "sodari";
 
 <Button variant="primary" size="lg" label="Save changes" onClick={save} />
 
@@ -244,7 +237,7 @@ A small status pill. The tone is appended to the accessible name so color isn't 
 | `label` | `string` | ✅ | Badge text |
 
 ```tsx
-import Badge from "your-package-name/Badge";
+import { Badge } from "sodari";
 
 <Badge tone="success" label="Active" />     {/* announced: "Active (success)" */}
 <Badge tone="error" label="Failed" />
@@ -267,7 +260,7 @@ Displays a user/entity avatar as initials, an icon, or an image.
 | `bgColor` | `string` | — | Tailwind background class, e.g. `"bg-primary"`. Defaults to `bg-primary`. |
 
 ```tsx
-import Avatar from "your-package-name/Avatar";
+import { Avatar } from "sodari";
 
 <Avatar variant="initials" value="JS" bgColor="bg-primary" />
 <Avatar variant="icon" value="person" />
@@ -291,7 +284,7 @@ An inline feedback banner with an icon, optional dismiss button, and an appropri
 > `danger` and `warning` are announced assertively (`role="alert"`); `info` and `success` use a polite `role="status"`.
 
 ```tsx
-import Alert from "your-package-name/Alert";
+import { Alert } from "sodari";
 
 <Alert tone="success" label="Your changes were saved." />
 <Alert tone="danger" label="Something went wrong." onDismiss={() => setShown(false)} />
@@ -319,7 +312,7 @@ A labeled text field with a leading icon, a right-side action button, helper tex
 | `onChange` | `(e: ChangeEvent<HTMLInputElement>) => void` | — | Change handler |
 
 ```tsx
-import Input from "your-package-name/Input";
+import { Input } from "sodari";
 
 <Input
   id="email"
@@ -360,7 +353,7 @@ A content card with optional media, title, description, and up to two footer act
 | `secondaryAction` | `{ label: string; onClick: () => void }` | — | Secondary footer button |
 
 ```tsx
-import Card from "your-package-name/Card";
+import { Card } from "sodari";
 
 <Card
   title="Welcome aboard"
@@ -386,7 +379,7 @@ A breadcrumb trail rendered as a semantic `<nav><ol>`. A home link is always pre
 | `active` | `string` | — | Reserved for active-item styling |
 
 ```tsx
-import Breadcrumb from "your-package-name/Breadcrumb";
+import { Breadcrumb } from "sodari";
 
 <Breadcrumb
   items={[
@@ -412,7 +405,7 @@ Three navigation primitives. `Tab` is a full-width tab bar, `SegmentTab` is a co
 | `ariaLabel` | `string` | — | Accessible name for the nav (`Tab` only) |
 
 ```tsx
-import Tab, { SegmentTab, TabNav } from "your-package-name/Tab";
+import { Tab, SegmentTab, TabNav } from "sodari";
 
 <Tab
   ariaLabel="Sections"
@@ -462,7 +455,7 @@ A unified control for checkboxes, radio buttons, and switches, with an optional 
 | `children` | `ReactNode` | ✅ | The `Choice` items |
 
 ```tsx
-import Choice, { ChoiceGroup } from "your-package-name/Choice";
+import { Choice, ChoiceGroup } from "sodari";
 
 <ChoiceGroup label="Notifications" type="checkbox">
   <Choice
@@ -496,7 +489,7 @@ A list-row component combining an optional avatar/icon, a label and subtitle, an
 | `rightIcon` | `string` | — | Trailing icon |
 
 ```tsx
-import Collection from "your-package-name/Collection";
+import { Collection } from "sodari";
 
 <Collection
   link="/users/42"
@@ -523,7 +516,7 @@ A compact, dismissible tag with an optional leading icon. The dismiss button is 
 | `dismissAction` | `() => void` | — | When set, shows a remove button |
 
 ```tsx
-import Chip from "your-package-name/Chip";
+import { Chip } from "sodari";
 
 <Chip label="React" icon="code" dismissAction={() => remove("react")} />
 ```
@@ -544,7 +537,7 @@ A horizontal or vertical progress indicator. Each step is a button (so steps can
 | `onClick` | `(id: string) => void` | — | Fires with the clicked step's id |
 
 ```tsx
-import Stepper from "your-package-name/Stepper";
+import { Stepper } from "sodari";
 
 <Stepper
   active="contact"
@@ -558,7 +551,7 @@ import Stepper from "your-package-name/Stepper";
 />
 ```
 
-> The vertical (`col`) variant draws a connector line between steps; the line under the final step is hidden by the `.stepper-col` CSS rule included in setup.
+> The vertical (`col`) variant draws a connector line between steps; the connector is automatically omitted on the final step.
 
 ---
 
@@ -574,7 +567,7 @@ A single-expand accordion. It reuses the **Stepper** data shape (`steps`) — ea
 | `active` | `string` | — | Initially expanded panel id |
 
 ```tsx
-import Accordion from "your-package-name/Accordion";
+import { Accordion } from "sodari";
 
 <Accordion
   active="shipping"
@@ -617,7 +610,7 @@ A semantic table system. `Table` wraps a native `<table>` inside a `Well` and su
 | `buttons` | `ButtonProps[]` | — | Row action buttons |
 
 ```tsx
-import Table, { Th, Td } from "your-package-name/Table";
+import { Table, Th, Td } from "sodari";
 
 <Table caption="Team members and their status">
   <thead>
@@ -652,7 +645,7 @@ A neutral surface/container — a white, rounded, shadowed box. Use it to group 
 | `isCollapsed` | `boolean` | — | Removes internal padding/gap |
 
 ```tsx
-import Well from "your-package-name/Well";
+import { Well } from "sodari";
 
 <Well direction="column">
   <h2>Summary</h2>
@@ -677,7 +670,7 @@ An accessible dialog rendered over a dimmed backdrop. It traps focus, restores f
 | `size` | `"sm" \| "md" \| "lg"` | — | Width (40% / 60% / 80%). Default `md`. |
 
 ```tsx
-import Modal from "your-package-name/Modal";
+import { Modal } from "sodari";
 
 {isOpen && (
   <Modal
@@ -708,7 +701,7 @@ A page title (`<h1>`) with a right-aligned group of action buttons.
 | `buttons` | `ButtonProps[]` | ✅ | Action buttons (grouped with an accessible label) |
 
 ```tsx
-import PageHeader from "your-package-name/PageHeader";
+import { PageHeader } from "sodari";
 
 <PageHeader
   title="Campaigns"
@@ -741,7 +734,7 @@ import type {
   StepperType,
   TableProps, ThProps, TdProps, SortDirection,
   IconProps,
-} from "your-package-name/types";
+} from "sodari";
 ```
 
 Key shared unions:
@@ -779,4 +772,6 @@ Consider adding a `CHANGELOG.md` alongside this file to track changes per versio
 
 ## License
 
-Add your chosen license here (e.g. MIT) and include a `LICENSE` file in the repository root.
+Sodari is released under the **MIT License** — free to use, modify, and distribute. See the [LICENSE](./LICENSE) file for the full text.
+
+Contributions and suggestions are welcome. Open an issue or pull request on [GitHub](https://github.com/swapnil712/sodari).
