@@ -1,19 +1,31 @@
 {
   "name": "sodari",
   "version": "0.1.0",
-  "private": true,
-  "files": ["components", "types", "dist"],
+  "description": "Accessibility-first React component library",
+  "license": "MIT",
+  "author": "Swapnil",
+  "keywords": [
+    "react",
+    "components",
+    "ui",
+    "tailwind",
+    "accessibility"
+  ],
+  "files": [
+    "components",
+    "types",
+    "LICENSE",
+    "README.md"
+  ],
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
-  },
-  "dependencies": {
-    "next": "16.2.9",
-    "postcss": "^8.5.15",
-    "react": "19.2.4",
-    "react-dom": "19.2.4"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.0",
@@ -22,7 +34,12 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.9",
+    "next": "16.2.9",
+    "postcss": "^8.5.15",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
     "tailwindcss": "^4.3.0",
-    "typescript": "^5"
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3"
   }
 }
